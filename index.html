@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+    <title>title</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            font-display: PT-sans;
+        }
+        table{
+            border-collapse: collapse;
+            table-layout:fixed;
+        }
+        thead {
+            background-color: #FFF;
+            display:table;
+            position: absolute;
+            z-index: 1;
+        }
+        tbody{
+            display: block;
+            max-height: 450px;
+            overflow-y: scroll;
+        }
+        td, th {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr {
+            display: flex;
+        }
+
+        td {
+            display: block;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 200px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .control {
+            border-radius: 50%;
+            padding: 10px;
+            background-color: #CCC;
+            color: #FFF;
+            width:20px;
+            height: 20px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 28px;
+            line-height: 19px;
+            transition: all 0.3s linear;
+        }
+        .control:hover {
+                background-color: #DDD;
+                transition: all 0.3s linear;
+        }
+
+        .stycky-header-table{
+            margin: 0px auto;
+            transition: all 0.3s linear;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sticky-table-headers"></script>
+  </head>
+  <body>
+<div>
+    <table class='stycky-header-table'>
+    <thead>
+        <tr><th>Firstname</th><th>Lastname</th> <th>Age</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+        <tr><td>Jill</td><td>Smith</td><td>50</td></tr>
+        <tr><td>Eve</td><td>Jackson</td> <td>94</td></tr>
+    </tbody>
+    </table>
+</div>
+    <div class='controls'>
+        <div class='control-plus control'>+</div>
+        <div class='control-minus control'>-</div>
+        <div class='control-eq control'>=</div>
+    </div>
+<script>
+
+var scale = 1;
+$(window).scroll(function() {
+        $(".stycky-header-table thead").css({
+            "top": $(window).scrollTop()/scale});
+});
+
+var width = {};
+
+init();
+
+function init(){
+    $('.stycky-header-table tr th').each(function(index){
+        width[index] = $(this).width();
+    });
+
+    $('.stycky-header-table tbody').css({'margin-top': $('.stycky-header-table thead').innerHeight() });
+
+    $('.stycky-header-table tr td:nth-child(n)').each(function(index){
+        $(this).css({width: width[0]});
+        console.log($(this))
+    })
+    $('.stycky-header-table tr td:nth-child(n+2)').each(function(index){
+        $(this).css({width: width[1]});
+        console.log($(this))
+    })  
+    $('.stycky-header-table tr td:nth-child(n+3)').each(function(index){
+        $(this).css({width: width[2]});
+        console.log($(this))
+    })
+}
+
+//controls listenres
+$('.control-eq').click(function(){
+    scale = 1;
+    $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+})
+
+$('.control-plus').click(function(){
+    console.log(123);
+
+    scale+=0.2;
+    $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+});
+
+$('.control-minus').click(function(){
+    scale-=0.2;
+    $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+});
+
+</script>
+
+  </body>
+</html>
