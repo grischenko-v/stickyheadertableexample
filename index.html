@@ -9,7 +9,8 @@
             padding: 0;
             height: 100vh;
             width: 100vw;
-            font-display: PT-sans;
+            font-family: PT-sans;
+            overflow: hidden;
         }
         table{
             border-collapse: collapse;
@@ -23,7 +24,7 @@
         }
         tbody{
             display: block;
-            max-height: 450px;
+            max-height: 100vh;
             overflow-y: scroll;
         }
         td, th {
@@ -150,15 +151,12 @@ function init(){
 
     $('.stycky-header-table tr td:nth-child(n)').each(function(index){
         $(this).css({width: width[0]});
-        console.log($(this))
     })
     $('.stycky-header-table tr td:nth-child(n+2)').each(function(index){
         $(this).css({width: width[1]});
-        console.log($(this))
     })  
     $('.stycky-header-table tr td:nth-child(n+3)').each(function(index){
         $(this).css({width: width[2]});
-        console.log($(this))
     })
 }
 
@@ -169,8 +167,6 @@ $('.control-eq').click(function(){
 })
 
 $('.control-plus').click(function(){
-    console.log(123);
-
     scale+=0.2;
     $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
 });
