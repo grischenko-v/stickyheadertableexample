@@ -126,9 +126,14 @@
     </div>
 <script>
 var scale = 1;
+
+function setHeader(){
+	$(".stycky-header-table thead").css({
+        "top": $(window).scrollTop()/scale});	
+}
+
 $(window).scroll(function() {
-        $(".stycky-header-table thead").css({
-            "top": $(window).scrollTop()/scale});
+	setHeader();
 });
 var width = {};
 init();
@@ -151,14 +156,17 @@ function init(){
 $('.control-eq').click(function(){
     scale = 1;
     $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+    setHeader();
 })
 $('.control-plus').click(function(){
     scale+=0.2;
     $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+    setHeader();
 });
 $('.control-minus').click(function(){
     scale-=0.2;
     $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+    setHeader();
 });
 </script>
 
