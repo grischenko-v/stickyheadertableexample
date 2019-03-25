@@ -65,6 +65,8 @@
         .stycky-header-table{
             margin: 0px auto;
             transition: all 0.3s linear;
+            transform-origin: top left;
+            transform: scale(1);
         }
         .table-wrapper {
         	max-height: 100vh;
@@ -138,6 +140,7 @@ $(".table-wrapper").scroll(function() {
 });
 var width = {};
 init();
+
 function init(){
     $('.stycky-header-table tr th').each(function(index){
         width[index] = $(this).width();
