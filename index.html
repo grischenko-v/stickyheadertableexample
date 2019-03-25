@@ -136,7 +136,8 @@ function setHeader(){
 }
 
 $(".table-wrapper").scroll(function() {
-	setHeader();
+	$(".stycky-header-table thead").animate({
+        "top": $(".table-wrapper").scrollTop()/scale}, 0);	
 });
 var width = {};
 init();
