@@ -8,7 +8,6 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-            width: 100vw;
             font-family: PT-sans;
         }
         table{
@@ -23,8 +22,6 @@
         }
         tbody{
             display: block;
-            max-height: 100vh;
-            overflow-y: scroll;
             box-sizing: border-box;
         }
         td, th {
@@ -69,12 +66,16 @@
             margin: 0px auto;
             transition: all 0.3s linear;
         }
+        .table-wrapper {
+        	max-height: 100vh;
+        	overflow: scroll;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://unpkg.com/sticky-table-headers"></script>
   </head>
   <body>
-<div>
+<div class='table-wrapper'>
     <table class='stycky-header-table'>
     <thead>
         <tr><th>Firstname</th><th>Lastname</th> <th>Age</th></tr>
@@ -129,10 +130,10 @@ var scale = 1;
 
 function setHeader(){
 	$(".stycky-header-table thead").css({
-        "top": $(window).scrollTop()/scale});	
+        "top": $(".table-wrapper").scrollTop()/scale});	
 }
 
-$(window).scroll(function() {
+$(".table-wrapper").scroll(function() {
 	setHeader();
 });
 var width = {};
