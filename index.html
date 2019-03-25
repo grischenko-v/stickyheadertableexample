@@ -10,7 +10,6 @@
             height: 100vh;
             width: 100vw;
             font-family: PT-sans;
-            overflow: hidden;
         }
         table{
             border-collapse: collapse;
@@ -24,23 +23,21 @@
         }
         tbody{
             display: block;
-            max-height: 45vh;
+            max-height: 100vh;
             overflow-y: scroll;
+            box-sizing: border-box;
         }
         td, th {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
         }
-
         tr {
             display: flex;
         }
-
         td {
             display: block;
         }
-
         .controls {
             position: fixed;
             bottom: 10px;
@@ -51,7 +48,6 @@
             display: flex;
             justify-content: space-around;
         }
-
         .control {
             border-radius: 50%;
             padding: 10px;
@@ -69,12 +65,10 @@
                 background-color: #DDD;
                 transition: all 0.3s linear;
         }
-
         .stycky-header-table{
             margin: 0px auto;
             transition: all 0.3s linear;
         }
-
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://unpkg.com/sticky-table-headers"></script>
@@ -131,24 +125,18 @@
         <div class='control-eq control'>=</div>
     </div>
 <script>
-
 var scale = 1;
 $(window).scroll(function() {
         $(".stycky-header-table thead").css({
             "top": $(window).scrollTop()/scale});
 });
-
 var width = {};
-
 init();
-
 function init(){
     $('.stycky-header-table tr th').each(function(index){
         width[index] = $(this).width();
     });
-
     $('.stycky-header-table tbody').css({'margin-top': $('.stycky-header-table thead').innerHeight() });
-
     $('.stycky-header-table tr td:nth-child(n)').each(function(index){
         $(this).css({width: width[0]});
     })
@@ -159,23 +147,19 @@ function init(){
         $(this).css({width: width[2]});
     })
 }
-
 //controls listenres
 $('.control-eq').click(function(){
     scale = 1;
     $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
 })
-
 $('.control-plus').click(function(){
     scale+=0.2;
     $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
 });
-
 $('.control-minus').click(function(){
     scale-=0.2;
     $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
 });
-
 </script>
 
   </body>
