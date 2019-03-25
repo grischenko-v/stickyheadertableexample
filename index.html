@@ -71,6 +71,8 @@
         .table-wrapper {
         	max-height: 100vh;
         	overflow: scroll;
+        	width: 1200px;
+		    margin: 0 auto;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -164,14 +166,18 @@ $('.control-eq').click(function(){
     setHeader();
 })
 $('.control-plus').click(function(){
-    scale+=0.2;
-    $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
-    setHeader();
+    if(scale < 1.8){
+	    scale+=0.2;
+	    $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+	    setHeader();
+	}
 });
 $('.control-minus').click(function(){
-    scale-=0.2;
-    $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
-    setHeader();
+	if(scale > 0.7){
+	    scale-=0.2;
+	    $(".stycky-header-table").css({transform: 'scale(' + scale + ')', 'transform-origin': 'top left' });
+	    setHeader();
+	}
 });
 </script>
 
